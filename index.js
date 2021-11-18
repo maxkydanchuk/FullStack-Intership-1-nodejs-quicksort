@@ -1,7 +1,7 @@
 const data = require('./prize.json');
 const quicksort = require('./quicksort');
 
-const result = quicksort(data.prizes, 'year');
+const result = quicksort(data.prizes, 'year', 'asc');
 console.log(result);
 
 const userMessage = (func, message) => {

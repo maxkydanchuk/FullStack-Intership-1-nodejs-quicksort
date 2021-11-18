@@ -1,4 +1,4 @@
-const quicksort = (dataset, property) => {
+const quicksort = (dataset, property, order) => {
     if (dataset.length <= 1) {
         return dataset;
     }
@@ -13,14 +13,23 @@ const quicksort = (dataset, property) => {
             continue;
         }
 
-        if (dataset[i][property] > middleElement) {
-            left.push(dataset[i]);
+        if(order === 'asc') {
+            if(dataset[i][property] > middleElement) {
+                left.push(dataset[i]);
 
-        } else {
-            right.push(dataset[i]);
+            } else {
+                right.push(dataset[i])
+            }
+        }
+        if(order === 'desc') {
+            if(dataset[i][property] < middleElement) {
+                left.push(dataset[i]);
+            } else {
+                right.push(dataset[i])
+            }
         }
     }
-    return [...quicksort(left, 'year'), dataset[middleIndex], ...quicksort(right, 'year')];
+    return [...quicksort(left, 'year', 'asc'), dataset[middleIndex], ...quicksort(right, 'year', 'asc')];
 }
 
 module.exports = quicksort;
